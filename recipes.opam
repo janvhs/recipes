@@ -12,6 +12,7 @@ bug-reports: "https://github.com/janvhs/recipes/issues"
 
 depends: [
   "dune" {>= "3.12"}
+  "dream"
 
   "alcotest" {with-test}
 
