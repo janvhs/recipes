@@ -1,0 +1,39 @@
+opam-version: "2.0"
+
+synopsis: "Remember and collect your favourite recipes"
+
+authors: ["Jan Fooken"]
+license: "GPL-3.0-or-later"
+
+homepage: "https://github.com/janvhs/recipes"
+doc: "https://github.com/janvhs/recipes"
+dev-repo: "git+https://github.com/janvhs/recipes.git"
+bug-reports: "https://github.com/janvhs/recipes/issues"
+
+depends: [
+  "dune" {>= "3.12"}
+
+  "alcotest" {with-test}
+
+  "odoc" {with-doc}
+
+  "ocamlformat" {with-dev-setup}
+  "ocaml-lsp-server" {with-dev-setup}
+  "utop" {with-dev-setup}
+]
+
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+
